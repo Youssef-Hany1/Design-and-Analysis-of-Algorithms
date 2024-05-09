@@ -1,0 +1,40 @@
+function main():
+    input: n (the size of the chessboard)
+    board = createEmptyBoard(n)
+    findKnightTour(board)
+
+function createEmptyBoard(n):
+    create an n x n chessboard with all squares unvisited
+    return the empty chessboard
+
+function findKnightTour(board):
+    if board is a base case (e.g., 6x6, 8x8, etc.):
+        findKnightTourOnBaseCase(board)
+    else:
+        split the board into four subboards
+        findKnightTourOnSubboard(board.topLeftSubboard)
+        findKnightTourOnSubboard(board.topRightSubboard)
+        findKnightTourOnSubboard(board.bottomLeftSubboard)
+        findKnightTourOnSubboard(board.bottomRightSubboard)
+        mergeTours(board)
+
+function findKnightTourOnBaseCase(board):
+    find a knight's tour on the base case board (e.g., using Warnsdorff's rule)
+
+function splitBoard(board):
+    split the board into four subboards (top-left, top-right, bottom-left, bottom-right)
+
+function findKnightTourOnSubboard(subboard):
+    find a knight's tour on a subboard recursively
+
+function mergeTours(board):
+    merge the tours from the four subboards to form a tour on the original board
+
+function isMoveValid(position, move):
+    check if a move from a position is valid (inside the board and not visited)
+
+function applyMove(position, move):
+    apply a move to a position on the board
+
+function revertMove(position, move):
+    revert a move from a position on the board
