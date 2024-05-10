@@ -9,7 +9,7 @@ def find_target(hiding_spots):
     else:
         position = 1
     
-    direction = 1
+    direction = 0
     spots = []
     for i in range(1, n+1):
         spots.append(i)
@@ -50,7 +50,7 @@ def shoot(position):
     global number_of_shots
     number_of_shots += 1
     print("Shooting position:", position)
-    print("target position  :", target_position)
+    print("target position:", target_position)
     if position == target_position:
         print("\nTarget is shot!")
         print("\nnumber of shots: ", number_of_shots)
