@@ -1,0 +1,30 @@
+TowerOfHanoi4Pegs(n, source, destination, auxiliary1, auxiliary2)
+    if n <= 0
+        return
+    else if n == 1
+        MoveDisk(1, source, destination)
+        return
+
+    // Move top n-2 disks to auxiliary1 using auxiliary2 and destination
+    TowerOfHanoi4Pegs(n - 2, source, auxiliary1, auxiliary2, destination)
+
+    // Move remaining 2 disks to destination using auxiliary2
+    MoveDisk(n - 1, source, auxiliary2)
+    MoveDisk(n, source, destination)
+    MoveDisk(n - 1, auxiliary2, destination)
+
+    // Move top n-2 disks to destination using auxiliary1 and source
+    TowerOfHanoi4Pegs(n - 2, auxiliary1, destination, source, auxiliary2)
+
+MoveDisk(disk, source, destination)
+    Output "Move disk disk from rod source to rod destination"
+    Increment totalMoves by 1
+
+Main()
+    Set N to 8  // Number of disks
+    Set A to 'A', B to 'B', C to 'C', D to 'D'  // Pegs
+    TowerOfHanoi4Pegs(N, A, D, B, C)  // A: source, D: destination, B, C: auxiliary
+    Output "Total moves: " concatenated with totalMoves
+    Exit program
+
+
