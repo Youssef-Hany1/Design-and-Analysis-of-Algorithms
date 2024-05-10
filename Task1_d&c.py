@@ -63,46 +63,46 @@ def color_corner(board, missing, mid_index):
 def divide(board, n):
     if n == 1:
         fill(board)
+        return
 
-    else:
-        edge = 2 ** n
-        mid = edge // 2
+    edge = 2 ** n
+    mid = edge // 2
 
-        q1 = [[board[i][j] for j in range(mid)] for i in range(mid)]
-        q2 = [[board[i][j] for j in range(mid, edge)] for i in range(mid)]
-        q3 = [[board[i][j] for j in range(mid)] for i in range(mid, edge)]
-        q4 = [[board[i][j] for j in range(mid, edge)] for i in range(mid, edge)]
+    q1 = [[board[i][j] for j in range(mid)] for i in range(mid)]
+    q2 = [[board[i][j] for j in range(mid, edge)] for i in range(mid)]
+    q3 = [[board[i][j] for j in range(mid)] for i in range(mid, edge)]
+    q4 = [[board[i][j] for j in range(mid, edge)] for i in range(mid, edge)]
 
-        missing = -1
-        if search(q1, 'X ') or search(q1, 'B '):
-            missing = 1
-        elif search(q2, 'X ') or search(q2, 'B '):
-            missing = 2
-        elif search(q3, 'X ') or search(q3, 'B '):
-            missing = 3
-        elif search(q4, 'X ') or search(q4, 'B '):
-            missing = 4
+    missing = -1
+    if search(q1, 'X ') or search(q1, 'B '):
+        missing = 1
+    elif search(q2, 'X ') or search(q2, 'B '):
+        missing = 2
+    elif search(q3, 'X ') or search(q3, 'B '):
+        missing = 3
+    elif search(q4, 'X ') or search(q4, 'B '):
+        missing = 4
 
-        color_corner(board, missing, mid-1)
+    color_corner(board, missing, mid-1)
 
-        q1 = [[board[i][j] for j in range(mid)] for i in range(mid)]
-        q2 = [[board[i][j] for j in range(mid, edge)] for i in range(mid)]
-        q3 = [[board[i][j] for j in range(mid)] for i in range(mid, edge)]
-        q4 = [[board[i][j] for j in range(mid, edge)] for i in range(mid, edge)]
+    q1 = [[board[i][j] for j in range(mid)] for i in range(mid)]
+    q2 = [[board[i][j] for j in range(mid, edge)] for i in range(mid)]
+    q3 = [[board[i][j] for j in range(mid)] for i in range(mid, edge)]
+    q4 = [[board[i][j] for j in range(mid, edge)] for i in range(mid, edge)]
 
-        divide(q1, n-1)
-        divide(q2, n-1)
-        divide(q3, n-1)
-        divide(q4, n-1)
+    divide(q1, n-1)
+    divide(q2, n-1)
+    divide(q3, n-1)
+    divide(q4, n-1)
 
 
-        # merge the quarters to the original board
-        for i in range(mid):
-            for j in range(mid):
-                board[i][j] = q1[i][j]
-                board[i][j + mid] = q2[i][j]
-                board[i + mid][j] = q3[i][j]
-                board[i + mid][j + mid] = q4[i][j]
+    # merge the quarters to the original board
+    for i in range(mid):
+        for j in range(mid):
+            board[i][j] = q1[i][j]
+            board[i][j + mid] = q2[i][j]
+            board[i + mid][j] = q3[i][j]
+            board[i + mid][j + mid] = q4[i][j]
 
 
 
