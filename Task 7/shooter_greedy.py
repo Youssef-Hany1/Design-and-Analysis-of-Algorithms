@@ -4,12 +4,9 @@ n = int(input("Enter number of hiding spots: "))
 target_position = random.randint(1, n)
 
 def find_target(hiding_spots): 
-    if(n > 1):
-        position = 2
-    else:
-        position = 1
+    position = 2
     
-    direction = 0
+    direction = 1
     spots = []
     for i in range(1, n+1):
         spots.append(i)
@@ -22,11 +19,9 @@ def find_target(hiding_spots):
         if position == n:
             continue
         else:
-            if direction == 0 and position == 2:
-                direction = 1
-            elif direction == 0 and position == n-1:
+            if direction == 0 and position == n-1:
                 direction = -1
-            elif position == 2 or position == n-1:
+            elif position == n-1:
                 direction = 0
             position += direction
 
