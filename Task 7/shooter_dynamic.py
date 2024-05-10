@@ -24,7 +24,7 @@ def dynamic(position, path):
         return
     
     path.append(position)
-    if position == n-1:
+    if position == n-1 or position == n:
         print("\n repeating the previous shots in reverse\n")
         memory(path)
         return
