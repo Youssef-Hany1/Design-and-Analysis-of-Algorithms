@@ -9,7 +9,6 @@ def find_target(hiding_spots):
     else:
         position = 1
     
-    direction = 1
     spots = []
     for i in range(1, n+1):
         spots.append(i)
